@@ -8,7 +8,7 @@ logging = setup_logger()
 
 DOCUMENTS_DIR = "uploaded_documents"
 PERSIST_DIRECTORY = "./chroma_db"
-ALLOWED_EXTENSIONS = ['.pdf', '.docx', '.csv', '.txt']
+ALLOWED_EXTENSIONS = ['.pdf', '.docx', '.csv']
 
 def ensure_documents_directory():
     """Ensure the documents directory exists."""

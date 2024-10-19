@@ -133,10 +133,16 @@ elif choice == "🤖 Chatbot":
                 try:
                     answer = st.session_state['chatbot_manager'].get_response(user_input)
                     time.sleep(1)
+
+                    # Display the chatbot's response (answer and sources)
+                    st.chat_message("assistant").markdown(f"**Answer:** {answer['response']}")  # Display the answer
+                    if answer.get('sources'):  # Check if sources are available
+                        st.chat_message("assistant").markdown(f"**Sources:** {answer['sources']}")
+
                 except Exception as e:
                     answer = f"⚠️ An error occurred while processing your request: {e}"
             
-            st.chat_message("assistant").markdown(answer)
+            # st.chat_message("assistant").markdown(answer)
             st.session_state['messages'].append({"role": "assistant", "content": answer})
 
 # Documents Page
