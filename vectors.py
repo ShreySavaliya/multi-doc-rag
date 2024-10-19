@@ -137,9 +137,9 @@ class EmbeddingsManager:
             raise ValueError(f"No text chunks were created from {file_path}.")
 
         # Add page information to metadata
-        for i, split in enumerate(splits):
-            split.metadata['page'] = i + 1  # Assuming each split is a page
-            split.metadata['source'] = os.path.basename(file_path)
+        # for i, split in enumerate(splits):
+        #     split.metadata['page'] = i + 1  # Assuming each split is a page
+        #     split.metadata['source'] = os.path.basename(file_path)
 
         return splits
     

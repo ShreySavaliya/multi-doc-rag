@@ -135,14 +135,19 @@ elif choice == "🤖 Chatbot":
                     time.sleep(1)
 
                     # Display the chatbot's response (answer and sources)
-                    st.chat_message("assistant").markdown(f"**Answer:** {answer['response']}")  # Display the answer
-                    if answer.get('sources'):  # Check if sources are available
-                        st.chat_message("assistant").markdown(f"**Sources:** {answer['sources']}")
+                    st.chat_message("assistant").markdown(f"{answer['result']}")  
+
+                    if answer.get('source_documents'): 
+                        st.markdown(f"\n\t**Sources:**")  
+
+                        for idx, source in enumerate(answer['source_documents'], 1):
+                            st.markdown(f"\t{idx}. {source.metadata['source']}")
+                            
+                        st.markdown(f"\t{answer['sources']}")  
 
                 except Exception as e:
                     answer = f"⚠️ An error occurred while processing your request: {e}"
             
-            # st.chat_message("assistant").markdown(answer)
             st.session_state['messages'].append({"role": "assistant", "content": answer})
 
 # Documents Page
